@@ -1,3 +1,7 @@
+dnf install firewalld -y
+systemctl start firewalld
+systemctl enable firewalld
+
 for service in http https tftp ftp mysql nfs mountd rpc-bind proxy-dhcp samba; do firewall-cmd --permanent --zone=public --add-service=$service; done
 
 echo "Open UDP port 49152 through 65532, the possible used ports for fog multicast" 
